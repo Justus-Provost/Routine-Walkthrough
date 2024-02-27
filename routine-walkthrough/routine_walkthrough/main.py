@@ -1,5 +1,7 @@
 import sys
 
+#from routine_walkthrough import routines
+import json
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QAction, QIcon
 from PyQt6.QtWidgets import (
@@ -10,6 +12,8 @@ from PyQt6.QtWidgets import (
     QStatusBar,
     QToolBar,
 )
+
+morning = {"get dressed": "put on clothes to match the weather.","eat breakfast": "toast or an egg.","brush teeth": "red toothbrush and blue toothpaste."}
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -26,10 +30,14 @@ class MainWindow(QMainWindow):
         toolbar.setIconSize(QSize(16, 16))
         self.addToolBar(toolbar)
 
+        #morning = {"get dressed": "put on clothes to match the weather.","eat breakfast": "toast or an egg.","brush teeth": "red toothbrush and blue toothpaste."}
+
+
         button_action = QAction(QIcon("bug.png"), "&Routine 1", self)
         button_action.setStatusTip("This is your first created routine")
         button_action.triggered.connect(self.onMyToolBarButtonClick)
         button_action.setCheckable(True)
+        button_action.triggered.connect(self.checkDataFormat)
         toolbar.addAction(button_action)
 
         toolbar.addSeparator()
@@ -38,6 +46,7 @@ class MainWindow(QMainWindow):
         button_action2.setStatusTip("This is your button2")
         button_action2.triggered.connect(self.onMyToolBarButtonClick)
         button_action2.setCheckable(True)
+        button_action2.triggered.connect(self.testingJson)
         toolbar.addAction(button_action2)
 
         #toolbar.addWidget(QLabel("Hello"))
@@ -56,6 +65,23 @@ class MainWindow(QMainWindow):
 
     def onMyToolBarButtonClick(self, s):
         print("click", s)
+
+    def testingJson(self):
+        #json.dumps("routines")
+        x = open("routine_walkthrough/routines.json", "r")
+        #y = json.loads(x)
+        y = json.loads(x.read())
+        print(y)
+        print(y['routines'])
+        x.close()
+
+    def checkDataFormat(self, data): #this is temporary
+        #morning = {"get dressed": "put on clothes to match the weather.","eat breakfast": "toast or an egg.","brush teeth": "red toothbrush and blue toothpaste."}
+        for i in morning:
+            print(i)
+            print(morning[i])
+            print(type([i]))
+            print(type(morning[i]))
 
 app = QApplication(sys.argv)
 w = MainWindow()
