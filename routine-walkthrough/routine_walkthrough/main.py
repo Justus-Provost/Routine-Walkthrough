@@ -72,8 +72,34 @@ class MainWindow(QMainWindow):
         #y = json.loads(x)
         y = json.loads(x.read())
         print(y)
-        print(y['routines'])
+        z = y['routines']
+        print(z)
+        print(type(z))
+        for i in z:
+            print("new one")
+            print(i)
+            print(type(i))
+            for e in i:
+                print("new layer")
+                print(e)
+                print(type(e))
+                print(i[e])
+                print(type(i[e]))
+                for b in i[e]:
+                    print("yet another layer")
+                    print(type(b))
+                    print(b)
+                    for t in b:
+                        print("yet another layer")
+                        print(type(t))
+                        print(t)
         x.close()
+    
+    #def furtherTestingJson(self, z):
+    #    for i in z:
+    #        print(i)
+    #        for e in i:
+    #            print(e)
 
     def checkDataFormat(self, data): #this is temporary
         #morning = {"get dressed": "put on clothes to match the weather.","eat breakfast": "toast or an egg.","brush teeth": "red toothbrush and blue toothpaste."}
@@ -87,3 +113,21 @@ app = QApplication(sys.argv)
 w = MainWindow()
 w.show()
 app.exec()
+
+"""def testingJson(self):
+        #json.dumps("routines")
+        x = open("routine_walkthrough/routines.json", "r")
+        #y = json.loads(x)
+        y = json.loads(x.read())
+        print(y)
+        print(y['routines'])
+        for i in y['routines']:
+            print("new one")
+            print(i)
+            for e in i:
+                print("new layer")
+                print(i[e])
+                for b in e:
+                    print("yet another layer")
+                    print([b])
+        x.close()"""
