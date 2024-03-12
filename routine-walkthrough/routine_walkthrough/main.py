@@ -12,7 +12,7 @@ from PyQt6.QtWidgets import (
     QStatusBar,
     QToolBar,
 )
-
+# idea create a separate widget that the main window opens
 morning = {"get dressed": "put on clothes to match the weather.","eat breakfast": "toast or an egg.","brush teeth": "red toothbrush and blue toothpaste."}
 
 class MainWindow(QMainWindow):
@@ -22,6 +22,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("My App")
 
         label = QLabel("Hello!")
+        label = QLabel(self.testingJson())
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.setCentralWidget(label)
@@ -93,7 +94,17 @@ class MainWindow(QMainWindow):
                         print("yet another layer")
                         print(type(t))
                         print(t)
-        x.close()
+                        u = t
+        return u
+    
+    #def iDontKnow(self):
+    #    button_action = QAction(QIcon("bug.png"), "&Routine 1", self)
+    #    button_action.setStatusTip("This is your first created routine")
+    #    button_action.triggered.connect(self.onMyToolBarButtonClick)
+    #    button_action.setCheckable(True)
+    #    button_action.triggered.connect(self.checkDataFormat)
+    #    self.toolbar.addAction(button_action)
+    #    x.close()
     
     #def furtherTestingJson(self, z):
     #    for i in z:

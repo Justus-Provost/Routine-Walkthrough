@@ -22,7 +22,7 @@ from PyQt6.QtWidgets import (
 from PyQt6 import QtCore, QtGui, QtWidgets
 #from __init__ import MainWindow as mw
 
-class Ui_MainWindow(QMainWindow):
+class Ui_SecondWindow(QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
@@ -89,7 +89,7 @@ class Ui_MainWindow(QMainWindow):
         self.label_2.setText(_translate("MainWindow", "description of item in routine"))
         self.pushButton.setText(_translate("MainWindow", "move to next item in routine"))
         self.pushButton_2.setText(_translate("MainWindow", "skip/cancel routine"))
-        self.label.setText(_translate("MainWindow", "name of item in routine"))
+        self.label.setText(_translate("MainWindow", "the second window"))
         self.menu_file.setTitle(_translate("MainWindow", "&file"))
         self.menu_open.setTitle(_translate("MainWindow", "&open"))
         self.action_new.setText(_translate("MainWindow", "&new"))

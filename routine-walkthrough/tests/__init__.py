@@ -11,11 +11,24 @@ from PyQt6.QtWidgets import (
     QMainWindow,
     QStatusBar,
     QToolBar,
+    #QDialog #experiment
 )
 
 from main_window_template_ui import Ui_MainWindow as umw
+from second_window_template_ui import Ui_SecondWindow as usw
 # idea create a separate widget that the main window opens
 morning = {"get dressed": "put on clothes to match the weather.","eat breakfast": "toast or an egg.","brush teeth": "red toothbrush and blue toothpaste."}
+
+def startUp():
+    #app = QApplication(sys.argv)
+    """w = MainWindow()
+    w.__init__()
+    w.show()
+    app.exec()"""
+    app = QApplication(sys.argv)
+    w = MainWindow()
+    w.show()
+    app.exec()
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -52,6 +65,15 @@ class MainWindow(QMainWindow):
         button_action2.triggered.connect(self.testingJson)
         toolbar.addAction(button_action2)
 
+        toolbar.addSeparator()
+
+        button_action3 = QAction(QIcon("bug.png"), "Routine &3", self)
+        button_action3.setStatusTip("This is your button3")
+        #button_action3.triggered.connect(self.onMyToolBarButtonClick)
+        button_action3.setCheckable(True)
+        button_action3.triggered.connect(self.testingJson)
+        toolbar.addAction(button_action3)
+
         #toolbar.addWidget(QLabel("Hello"))
         #toolbar.addWidget(QCheckBox())
 
@@ -66,13 +88,45 @@ class MainWindow(QMainWindow):
         file_submenu = file_menu.addMenu("Submenu")
         file_submenu.addAction(button_action2)
 
+        
+
     def onMyToolBarButtonClick(self, s):
         print("click", s)
-        app = QApplication(sys.argv)
-        y = umw()
-        #y.setupUi(QMainWindow)
-        y.show()
-        app.exec()
+        ##app = QApplication(sys.argv)
+        #y = umw()
+        #y.setupUi(self)
+        #y.show()
+        #app.exec()
+        if s == True:
+            """self.addDockWidget #experiment"""
+            
+            y = umw()
+            y.setupUi(self)
+            y.show()
+            """
+            self.y = umw()
+            self.y.setupUi(self)
+            self.y.show()
+            """
+            #app.exec()
+        else:
+            c = usw()
+            c.setupUi(self)
+            c.show()
+            #self = MainWindow
+            """self.__init__()
+            self.show()
+            umw.exit()"""
+            #s = QApplication.instance().quit()
+            #app = QApplication(sys.argv)
+            #s = QApplication.instance().quit()
+            #w = MainWindow()
+            #umw.backToMain(self, MainWindow)
+                ##umw.backToMain(self)
+                ##startUp()
+            #w.show()
+            #app.exec()
+            #QApplication.instance().quit()
 
     def testingJson(self):
         #json.dumps("routines")
@@ -127,10 +181,11 @@ class MainWindow(QMainWindow):
             print(type([i]))
             print(type(morning[i]))
 
-app = QApplication(sys.argv)
-w = MainWindow()
-w.show()
-app.exec()
+startUp()
+#app = QApplication(sys.argv)
+#w = MainWindow()
+#w.show()
+#app.exec()
 
 
 """def testingJson(self):
