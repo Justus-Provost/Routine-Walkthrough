@@ -13,6 +13,7 @@ from PyQt6.QtWidgets import (
     QToolBar,
     #QDialog #experiment
 )
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 from main_window_template_ui import Ui_MainWindow as umw
 from second_window_template_ui import Ui_SecondWindow as usw
@@ -36,8 +37,8 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("My App")
 
-        label = QLabel("Hello!")
-        label = QLabel(self.testingJson())
+        label = QLabel("Select a routine")
+        #label = QLabel(self.testingJson())
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.setCentralWidget(label)
@@ -49,12 +50,13 @@ class MainWindow(QMainWindow):
         #morning = {"get dressed": "put on clothes to match the weather.","eat breakfast": "toast or an egg.","brush teeth": "red toothbrush and blue toothpaste."}
 
 
-        button_action = QAction(QIcon("bug.png"), "&Routine 1", self)
-        button_action.setStatusTip("This is your first created routine")
-        button_action.triggered.connect(self.onMyToolBarButtonClick)
-        button_action.setCheckable(True)
-        button_action.triggered.connect(self.checkDataFormat)
-        toolbar.addAction(button_action)
+        self.button_action = QAction(QIcon("bug.png"), "&Routine 1", self)
+        self.button_action.setStatusTip("This is your first created routine")
+        self.button_action.triggered.connect(self.onMyToolBarButtonClick)
+        #self.button_action.triggered.connect(self.retranslateUi)
+        self.button_action.setCheckable(True)
+        self.button_action.triggered.connect(self.checkDataFormat)
+        toolbar.addAction(self.button_action)
 
         toolbar.addSeparator()
 
@@ -82,11 +84,17 @@ class MainWindow(QMainWindow):
         menu = self.menuBar()
 
         file_menu = menu.addMenu("&File")
-        file_menu.addAction(button_action)
+        file_menu.addAction(self.button_action)
         file_menu.addSeparator()
 
         file_submenu = file_menu.addMenu("Submenu")
         file_submenu.addAction(button_action2)
+
+        self.retranslateUi()
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.button_action.setText(_translate("MainWindow", "Morning"))
 
         
 
@@ -111,7 +119,7 @@ class MainWindow(QMainWindow):
             #app.exec()
         else:
             c = usw()
-            c.setupUi(self)
+            c.setupUi(self)#, self.u)
             c.show()
             #self = MainWindow
             """self.__init__()
@@ -134,6 +142,8 @@ class MainWindow(QMainWindow):
         #y = json.loads(x)
         y = json.loads(x.read())
         print(y)
+        print(y['routines'][0]['morning'][0]['get dressed']) #This is how to properly read the .json file and organize it
+        print(type(y['routines'][0]['morning'][0]['get dressed']))
         z = y['routines']
         print(z)
         print(type(z))
@@ -151,11 +161,15 @@ class MainWindow(QMainWindow):
                     print("yet another layer")
                     print(type(b))
                     print(b)
+                    self.routine_testing = b
+                    usw.b = b
                     for t in b:
                         print("yet another layer")
                         print(type(t))
                         print(t)
                         u = t
+        self.u = u
+        usw.u = self.u
         return u
     
     #def iDontKnow(self):

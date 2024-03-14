@@ -23,7 +23,14 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 #from __init__ import MainWindow as mw
 
 class Ui_SecondWindow(QMainWindow):
-    def setupUi(self, MainWindow):
+    def setupUi(self, MainWindow, t = 1):
+        if type(t) == str:
+            pass
+        else:
+            t = "description of item in routine"
+        self.b = 1
+        self.u = 1
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
@@ -79,14 +86,14 @@ class Ui_SecondWindow(QMainWindow):
         self.menu_file.addAction(self.action_new)
         self.menubar.addAction(self.menu_file.menuAction())
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(MainWindow, t)
         self.action_place_holder.triggered.connect(self.action_place_holder.trigger) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, MainWindow, t = "description of item in routine"):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_2.setText(_translate("MainWindow", "description of item in routine"))
+        self.label_2.setText(_translate("MainWindow", t))
         self.pushButton.setText(_translate("MainWindow", "move to next item in routine"))
         self.pushButton_2.setText(_translate("MainWindow", "skip/cancel routine"))
         self.label.setText(_translate("MainWindow", "the second window"))
@@ -96,6 +103,10 @@ class Ui_SecondWindow(QMainWindow):
         self.action_place_holder.setText(_translate("MainWindow", "&place_holder"))
         self.action_place_holder_2.setText(_translate("MainWindow", "&place_holder_2"))
 
+    def next_item(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.label_2.setText(_translate("MainWindow", self.b[self.u]))
+    
     def backToMain(self):
         print("click")
         ##app = QApplication(sys.argv)
