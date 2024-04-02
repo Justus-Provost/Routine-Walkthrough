@@ -28,9 +28,46 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        routine = ["place_holder", "another_place_holder"]
+
         y = urs()
-        y.setupUi(self)
+        y.setupUi(self, routine)
         y.show()
+
+        y.open_viewer()
+#flip routine_control and back_end_setup's position
+"""
+class routine_control():# create different objects for each routine than save them as different objects if this
+    def __init__(self):
+        super().__init__()
+
+        self.routines = self.get_routines()
+
+    def breakdown_into_list(self):
+        pass
+
+    def update_routine(self):
+        pass
+
+    def rebuild_routine(self):
+        pass
+class back_end_setup():
+    def __init__(self):
+        super().__init__()
+        self.routines = self.get_routines()
+
+    def get_routines(self):
+        self.routines = 0#insert the json here
+        return 0
+
+    def separate_routine(self):
+        pass
+    
+    def rebuild_all_routines(self):
+        pass
+
+    def save_routines(self):
+        pass"""
 
         
 startUp()
