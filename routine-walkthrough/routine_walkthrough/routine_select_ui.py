@@ -17,6 +17,8 @@ from PyQt6.QtWidgets import (
     QMainWindow,
     QStatusBar,
     QToolBar,
+    QPushButton,
+    #QAction,
     #QDialog #experiment
 )
 
@@ -27,70 +29,100 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 from routine_viewer_ui import Ui_RoutineViewer as urv
 
-app = QApplication(sys.argv)
+#app = QApplication(sys.argv)
 
 class Ui_RoutineSelect(QMainWindow):
-    def setupUi(self, RoutineSelect, r):
-        self.r = r
+    def __init__(self):
+        super().__init__()
+        self.r = ["place_holder", "another_place_holder"]
         self.v = None
-        RoutineSelect.setObjectName("RoutineSelect")
-        RoutineSelect.resize(266, 194)
-        self.centralwidget = QtWidgets.QWidget(parent=RoutineSelect)
+        self.setObjectName("RoutineSelect")
+        self.resize(266, 194)
+        self.centralwidget = QtWidgets.QWidget(parent=self)
         self.centralwidget.setObjectName("centralwidget")
         self.instruction_select_text = QtWidgets.QLabel(parent=self.centralwidget)
         self.instruction_select_text.setGeometry(QtCore.QRect(0, 0, 261, 151))
         self.instruction_select_text.setWordWrap(True)
         self.instruction_select_text.setObjectName("instruction_select_text")
-        RoutineSelect.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(parent=RoutineSelect)
+        self.setCentralWidget(self.centralwidget)
+        """self.menubar = QtWidgets.QMenuBar(parent=self)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 266, 21))
-        self.menubar.setObjectName("menubar")
-        self.menuplace_holder_1 = QtWidgets.QMenu(parent=self.menubar)
-        self.menuplace_holder_1.setObjectName("menuplace_holder_1")
-        self.menuplace_holder_1.triggered.connect(self.open_viewer)#())# this breaks it but it still doesn't work properly
-        self.menuplace_holder_2 = QtWidgets.QMenu(parent=self.menubar)
-        self.menuplace_holder_2.setObjectName("menuplace_holder_2")
+        self.menubar.setObjectName("menubar")"""
+        toolbar = QToolBar("THE toolbar")
+        self.addToolBar(toolbar)
+        menuplace_holder_1 = QAction("toolbar_placeholder_1", self)#parent=self.menubar)
+        #self.menuplace_holder_1 = QtWidgets.QPushButton(parent=self.menubar)
+        menuplace_holder_1.setObjectName("menuplace_holder_1")
         
-        RoutineSelect.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=RoutineSelect)
+        menuplace_holder_1.triggered.connect(self.open_viewer)#())# this breaks it but it still doesn't work properly
+        toolbar.addAction(menuplace_holder_1)
+        #menuplace_holder_1.menuAction()
+        #self.menuplace_holder_1.clicked.connect(self.open_viewer)
+        menuplace_holder_2 = QAction("toolbar_placeholder_2", self)#parent=self.menubar)
+        menuplace_holder_2.setObjectName("menuplace_holder_2")
+        menuplace_holder_2.triggered.connect(self.open_viewer)
+        toolbar.addAction(menuplace_holder_2)
+        #self.setMenuBar(self.menubar)
+        """self.statusbar = QtWidgets.QToolBar(parent=self)
         self.statusbar.setObjectName("statusbar")
-        RoutineSelect.setStatusBar(self.statusbar)
-        self.menubar.addAction(self.menuplace_holder_1.menuAction())
+        self.addToolBar(self.statusbar)"""
+        """self.menubar.addAction(menuplace_holder_1.menuAction())
+        #self.menubar.addAction(self.menuplace_holder_1)
         self.menubar.addSeparator()
-        self.menubar.addAction(self.menuplace_holder_2.menuAction())
-        for i in self.r:
+        self.menubar.addAction(self.menuplace_holder_2.menuAction())"""
+
+        """for i in self.r:
             self.menubar.addSeparator()
             self.menuplace_holder = QtWidgets.QMenu(parent=self.menubar)#
             self.menuplace_holder.setObjectName(i)
             self.menubar.addAction(self.menuplace_holder.menuAction())
-            print(i)
+            print(i)"""
         #for i in self.r:
         #    self.menubar.addAction(self.menuplace_holder.menuAction())#
         
-
-        self.retranslateUi(RoutineSelect)
-        self.menubar.triggered['QAction*'].connect(self.instruction_select_text.show) # type: ignore
-        QtCore.QMetaObject.connectSlotsByName(RoutineSelect)
+        #menuplace_holder_1.setTitle("place_holder_1")
+        self.retranslateUi(self)
+        #self.menubar.triggered['QAction*'].connect(self.open_viewer) # type: ignore
+        QtCore.QMetaObject.connectSlotsByName(self)
+        #self.open_viewer(self.v)
+        """self.x = urv()
+        self.x.setupUi(self)
+        self.x.show()"""
+        #self.open_viewer()
+        #self.open_viewer()
 
     def retranslateUi(self, RoutineSelect):
         _translate = QtCore.QCoreApplication.translate
-        RoutineSelect.setWindowTitle(_translate("RoutineSelect", "RoutineSelect"))
+        self.setWindowTitle(_translate("RoutineSelect", "RoutineSelect"))
         self.instruction_select_text.setText(_translate("RoutineSelect", "Choose which routine to walkthrough from the toolbar."))
-        self.menuplace_holder_1.setTitle(_translate("RoutineSelect", "place_holder_1"))
-        self.menuplace_holder_2.setTitle(_translate("RoutineSelect", "place_holder_2"))
-        for i in self.r:
-            self.menuplace_holder.setTitle(_translate("RoutineSelect", str(i)))#
+        #menuplace_holder_1.setTitle(_translate("RoutineSelect", "place_holder_1"))
+        #self.menuplace_holder_2.setTitle(_translate("RoutineSelect", "place_holder_2"))
+        #for i in self.r:
+        #    self.menuplace_holder.setTitle(_translate("RoutineSelect", str(i)))#
     
     def open_viewer(self):
         print("here")
         if self.v == None:
-            self.v = urv()
-            self.v.setupUi(self)
+            print("open viewer")
+            app = QApplication(sys.argv)
+            self.v = urv(1)
+            #self.v.setupUi(self)
+            #self.v.retranslateUi(self)
             self.v.show()
+            app.exec()
+            
 
         else:
+            print("close viewer")
             self.v = None
             
+def startUp():
+    routine = ["place_holder", "another_place_holder"]
+    app = QApplication(sys.argv)
+    w = Ui_RoutineSelect()#routine)
+    #w.setupUi(routine)
+    w.show()
+    app.exec()
 
 """app = QApplication(sys.argv)
 RoutineSelect = Ui_RoutineSelect()

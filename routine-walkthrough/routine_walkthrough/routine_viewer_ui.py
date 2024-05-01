@@ -24,37 +24,65 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class Ui_RoutineViewer(QMainWindow):
-    def setupUi(self, RoutineViewer):
-        RoutineViewer.setObjectName("RoutineViewer")
-        RoutineViewer.resize(400, 300)
-        self.gridLayoutWidget = QtWidgets.QWidget(parent=RoutineViewer)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(9, 9, 371, 271))
-        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
-        self.end_button = QtWidgets.QPushButton(parent=self.gridLayoutWidget)
-        self.end_button.setObjectName("end_button")
-        self.gridLayout.addWidget(self.end_button, 1, 1, 1, 1)
-        self.next_button = QtWidgets.QPushButton(parent=self.gridLayoutWidget)
-        self.next_button.setObjectName("next_button")
-        self.gridLayout.addWidget(self.next_button, 0, 1, 1, 1)
-        self.name_label = QtWidgets.QLabel(parent=self.gridLayoutWidget)
-        self.name_label.setObjectName("name_label")
-        self.gridLayout.addWidget(self.name_label, 0, 0, 1, 1)
-        self.description_label = QtWidgets.QLabel(parent=self.gridLayoutWidget)
-        self.description_label.setObjectName("description_label")
-        self.gridLayout.addWidget(self.description_label, 1, 0, 1, 1)
+    def __init__(self, f = 0):
+        super().__init__()
+        self.setObjectName("RoutineViewer")
+        self.resize(400, 300)
+        gridLayoutWidget = QtWidgets.QWidget(parent=self)
+        gridLayoutWidget.setGeometry(QtCore.QRect(9, 9, 371, 271))
+        gridLayoutWidget.setObjectName("gridLayoutWidget")
+        gridLayout = QtWidgets.QGridLayout(gridLayoutWidget)
+        gridLayout.setContentsMargins(0, 0, 0, 0)
+        gridLayout.setObjectName("gridLayout")
+        end_button = QtWidgets.QPushButton(parent=gridLayoutWidget)
+        end_button.setObjectName("end_button")
+        end_button.setText("End")
+        end_button.clicked.connect(self.end)
+        gridLayout.addWidget(end_button, 1, 1, 1, 1)
+        next_button = QtWidgets.QPushButton(parent=gridLayoutWidget)
+        next_button.setObjectName("next_button")
+        next_button.setText("Next")
+        next_button.clicked.connect(self.next)
+        gridLayout.addWidget(next_button, 0, 1, 1, 1)
+        name_label = QtWidgets.QLabel(parent=gridLayoutWidget)
+        name_label.setObjectName("name_label")
+        gridLayout.addWidget(name_label, 0, 0, 1, 1)
+        description_label = QtWidgets.QLabel(parent=gridLayoutWidget)
+        description_label.setObjectName("description_label")
+        gridLayout.addWidget(description_label, 1, 0, 1, 1)
+        self.count_end = 0
+        self.count_next = 0
 
-        self.retranslateUi(RoutineViewer)
-        self.next_button.clicked.connect(self.name_label.show) # type: ignore
-        self.next_button.clicked.connect(self.description_label.show) # type: ignore
-        QtCore.QMetaObject.connectSlotsByName(RoutineViewer)
+        #self.retranslateUi()
+        #self.next_button.triggered(self.printing)#.connect(self.name_label.show) # type: ignore
+        #self.end_button.clicked.connect(self.description_label.show)#setText("hi")) # type: ignore
+        #QtCore.QMetaObject.connectSlotsByName(self)
+        if f == 1:
+            print("True")
+        else:
+            print("False")
 
-    def retranslateUi(self, RoutineViewer):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        RoutineViewer.setWindowTitle(_translate("RoutineViewer", "RoutineViewer"))
-        self.end_button.setText(_translate("RoutineViewer", "End"))
-        self.next_button.setText(_translate("RoutineViewer", "Next"))
+        self.setWindowTitle(_translate("RoutineViewer", "RoutineViewer"))
+        #self.end_button.setText(_translate("RoutineViewer", "End"))
+        #self.next_button.setText(_translate("RoutineViewer", "Next"))
         self.name_label.setText(_translate("RoutineViewer", "place holder for name of item in routine"))
         self.description_label.setText(_translate("RoutineViewer", "place holder for description of item in routine"))
+    
+    def next(self):
+        print("next")
+        print(str(self.count_next))
+        self.count_next += 1
+    
+    def end(self):
+        print("End")
+        print(str(self.count_end))
+        self.count_end += 1
+        
+"""
+app = QApplication(sys.argv)
+w = Ui_RoutineViewer()
+w.setupUi(Ui_RoutineViewer())
+w.show()
+app.exec()"""
