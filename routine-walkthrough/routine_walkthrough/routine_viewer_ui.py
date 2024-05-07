@@ -44,14 +44,14 @@ class Ui_RoutineViewer(QMainWindow):
         next_button.setText("Next")
         next_button.clicked.connect(self.next)
         gridLayout.addWidget(next_button, 0, 1, 1, 1)
-        name_label = QtWidgets.QLabel(parent=gridLayoutWidget)
-        name_label.setObjectName("name_label")
-        gridLayout.addWidget(name_label, 0, 0, 1, 1)
-        description_label = QtWidgets.QLabel(parent=gridLayoutWidget)
-        description_label.setObjectName("description_label")
-        gridLayout.addWidget(description_label, 1, 0, 1, 1)
+        self.name_label = QtWidgets.QLabel(parent=gridLayoutWidget)
+        self.name_label.setObjectName("name_label")
+        gridLayout.addWidget(self.name_label, 0, 0, 1, 1)
+        self.description_label = QtWidgets.QLabel(parent=gridLayoutWidget)
+        self.description_label.setObjectName("description_label")
+        gridLayout.addWidget(self.description_label, 1, 0, 1, 1)
         self.count_end = 0
-        self.count_next = 0
+        self.count = 0
 
         #self.retranslateUi()
         #self.next_button.triggered(self.printing)#.connect(self.name_label.show) # type: ignore
@@ -61,6 +61,7 @@ class Ui_RoutineViewer(QMainWindow):
             print("True")
         else:
             print("False")
+        self.next()
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -70,15 +71,28 @@ class Ui_RoutineViewer(QMainWindow):
         self.name_label.setText(_translate("RoutineViewer", "place holder for name of item in routine"))
         self.description_label.setText(_translate("RoutineViewer", "place holder for description of item in routine"))
     
-    def next(self):
+    def next(self):#give routine and keyholder if possible. if not make them contained with self
         print("next")
-        print(str(self.count_next))
-        self.count_next += 1
+        print(str(self.count))
+        #need to have save in case there were any modifications
+        self.name_label.setText(str(self.count))
+        self.description_label.setText(str(self.count%4))
+        self.count += 1
+        """#planning
+        if self.count == len(self.keyholder):
+            self.keyholder.append(str(self.count))
+            self.routine[self.keyholder[self.count]] = self.count
+        
+        self.name_label.setText(str(self.keyholder[self.count]))
+        self.description_label.setText(str(self.routine[self.keyholder[self.count_next]]))
+        
+        """
     
     def end(self):
         print("End")
         print(str(self.count_end))
-        self.count_end += 1
+        #need to have save in case there were any modifications
+        self.count += 1
         
 """
 app = QApplication(sys.argv)

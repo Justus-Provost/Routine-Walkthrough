@@ -35,7 +35,7 @@ class Ui_RoutineSelect(QMainWindow):
     def __init__(self):
         super().__init__()
         self.r = ["place_holder", "another_place_holder"]
-        self.v = None
+        self.w = None
         self.setObjectName("RoutineSelect")
         self.resize(266, 194)
         self.centralwidget = QtWidgets.QWidget(parent=self)
@@ -102,28 +102,47 @@ class Ui_RoutineSelect(QMainWindow):
     
     def open_viewer(self):
         print("here")
-        if self.v == None:
+        #self.close()
+        #startup_viewer()
+        if self.w == None:
             print("open viewer")
-            app = QApplication(sys.argv)
-            self.v = urv(1)
+            #app = QApplication(sys.argv)
+            self.w = urv(1)
             #self.v.setupUi(self)
             #self.v.retranslateUi(self)
-            self.v.show()
-            app.exec()
+            self.w.show()
+            #app.exec()
             
 
         else:
             print("close viewer")
-            self.v = None
+            self.w = None
             
 def startUp():
     routine = ["place_holder", "another_place_holder"]
-    app = QApplication(sys.argv)
+    app1 = QApplication(sys.argv)
     w = Ui_RoutineSelect()#routine)
     #w.setupUi(routine)
     w.show()
-    app.exec()
+    app1.exec()
 
+"""def startup_viewer(w = None):
+    print("here 2")
+    if w == None:
+        print("startup viewer")
+        #app2 = QApplication(sys.argv)
+        w = urv(1)
+        #self.v.setupUi(self)
+        #self.v.retranslateUi(self)
+        w.show()
+        #app2.exec()
+        #finish_app2 = app2.exec()
+        #handle_finish = finish_app2
+    else:
+        print("close viewer")
+        #v = None
+    #sys.exit(Ui_RoutineSelect)
+    #return w"""
 """app = QApplication(sys.argv)
 RoutineSelect = Ui_RoutineSelect()
 RoutineSelect.setupUi(RoutineSelect)

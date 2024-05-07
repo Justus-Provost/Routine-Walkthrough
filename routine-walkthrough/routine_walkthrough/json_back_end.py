@@ -1,5 +1,5 @@
 import json
-
+"""
 x = open("routine_walkthrough/routines.json", "r")
 #y = json.loads(x)
 y = json.loads(x.read())
@@ -9,7 +9,7 @@ print(y['routines'][0]['morning'][0]['get dressed']) #This is how to properly re
 print("second test")
 print(type(y['routines'][0]['morning'][0]['get dressed']))
 print("third test")
-
+"""
 #y['routines'][0][i] this is how I will process the individual routines.
 
 class routine_control():# create different objects for each routine than save them as different objects if this
@@ -18,17 +18,17 @@ class routine_control():# create different objects for each routine than save th
 
         self.routines = self.get_routines()
 
-    def breakdown_into_list(self):
+    def breakdown_into_list(self):#don't need this other class's job
         pass
 
-    def update_routine(self):
-        pass
+    def update_routine(self):#constantly update the routine from changes made in the routine viewer
+        pass#might move this
 
-    def rebuild_routine(self):
+    def rebuild_routine(self):#receive the "routine" from the routine viewer and formulate/rebuild it
         pass
         
 class back_end_setup():
-    def __init__(self):
+    def __init__(self):#currently using this to verify it works
         super().__init__()
         self.routines = self.get_routines()
         print(type(list(self.routines)))
@@ -37,6 +37,7 @@ class back_end_setup():
         self.separate_routine(self.routines, 0)
         print("temp")
         temp = self.get_specific_routine(1)
+        self.temp = temp
         print(temp)
         print("temp")
         temp = self.get_specific_routine(0)
@@ -51,8 +52,10 @@ class back_end_setup():
 
     def get_routines(self):
         x = open("routine_walkthrough/routines.json", "r")
-        self.routines = json.loads(x.read())
-        return self.routines['routines'][0]
+        print(x)
+        self.all_routines = json.loads(x.read())
+        print(self.all_routines)
+        return self.all_routines['routines'][0]
 
     def separate_routine(self, x, z):
         print(x)
@@ -79,10 +82,16 @@ class back_end_setup():
         
 
 
-    def rebuild_all_routines(self):
-        pass
+    def rebuild_all_routines(self, x):
+        print("testing")
+        print(x[0])
+        print(self.temp[x[0]])
+        #pass
 
     def save_routines(self):
-        pass
+        self.all_routines
+        
+        return
 
 test = back_end_setup()
+print(test.save_routines())
