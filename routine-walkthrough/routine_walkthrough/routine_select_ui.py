@@ -29,7 +29,7 @@ class Ui_RoutineSelect(QMainWindow):
         self.r = ["place_holder", "another_place_holder"]
         self.w = None
         self.setObjectName("RoutineSelect")
-        self.resize(266, 194)
+        self.resize(275, 200)
         self.centralwidget = QtWidgets.QWidget(parent=self)
         self.centralwidget.setObjectName("centralwidget")
         self.instruction_select_text = QtWidgets.QLabel(parent=self.centralwidget)

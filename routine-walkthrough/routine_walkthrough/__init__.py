@@ -17,6 +17,5 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from routine_select_ui import Ui_RoutineSelect as urs
 from routine_viewer_ui import Ui_RoutineViewer as urv
 from routine_select_ui import startUp
-from json_back_end import back_end_setup as bes
 
 startUp()
