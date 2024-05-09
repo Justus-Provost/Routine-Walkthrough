@@ -54,13 +54,13 @@ class Ui_RoutineSelect(QMainWindow):
         #self.menuplace_holder_1 = QtWidgets.QPushButton(parent=self.menubar)
         menuplace_holder_1.setObjectName("menuplace_holder_1")
         
-        menuplace_holder_1.triggered.connect(self.open_viewer)#())# this breaks it but it still doesn't work properly
+        menuplace_holder_1.triggered.connect(self.open_first)#())# this breaks it but it still doesn't work properly
         toolbar.addAction(menuplace_holder_1)
         #menuplace_holder_1.menuAction()
         #self.menuplace_holder_1.clicked.connect(self.open_viewer)
         menuplace_holder_2 = QAction("toolbar_placeholder_2", self)#parent=self.menubar)
         menuplace_holder_2.setObjectName("menuplace_holder_2")
-        menuplace_holder_2.triggered.connect(self.open_viewer)
+        menuplace_holder_2.triggered.connect(self.open_second)
         toolbar.addAction(menuplace_holder_2)
         #self.setMenuBar(self.menubar)
         """self.statusbar = QtWidgets.QToolBar(parent=self)
@@ -100,23 +100,31 @@ class Ui_RoutineSelect(QMainWindow):
         #for i in self.r:
         #    self.menuplace_holder.setTitle(_translate("RoutineSelect", str(i)))#
     
-    def open_viewer(self):
+    def open_first(self):# try to come up with a different solution if possible
+        self.open_viewer(1)
+
+    def open_second(self):
+        self.open_viewer(2)
+    
+    def open_viewer(self, v = 0):
         print("here")
+        print(str(v))
+        v = v - 1
         #self.close()
         #startup_viewer()
-        if self.w == None:
-            print("open viewer")
-            #app = QApplication(sys.argv)
-            self.w = urv(1)
-            #self.v.setupUi(self)
-            #self.v.retranslateUi(self)
-            self.w.show()
-            #app.exec()
+        #if self.w == None:
+        print("open viewer")
+        #app = QApplication(sys.argv)
+        self.w = urv(v)
+        #self.v.setupUi(self)
+        #self.v.retranslateUi(self)
+        self.w.show()
+        #app.exec()
             
 
-        else:
-            print("close viewer")
-            self.w = None
+        #else:
+            #print("close viewer")
+            #self.w = None
             
 def startUp():
     routine = ["place_holder", "another_place_holder"]

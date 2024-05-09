@@ -28,27 +28,27 @@ class routine_control():# create different objects for each routine than save th
         pass
         
 class back_end_setup():
-    def __init__(self):#currently using this to verify it works
+    def __init__(self, num):#currently using this to verify it works
         super().__init__()
         self.routines = self.get_routines()
         print(type(list(self.routines)))
         #self.routines = list(self.routines)
         print(type(self.routines))
-        self.separate_routine(self.routines, 0)
+        self.separate_routine(self.routines, num)
         print("temp")
-        temp = self.get_specific_routine(1)
-        self.temp = temp
+        temp = self.get_specific_routine(num)
+        self.routine = temp
         print(temp)
         print("temp")
-        temp = self.get_specific_routine(0)
+        temp = self.get_specific_routine(1)
         print(temp)
         """self.keyholder = []
         for i in temp:
             self.keyholder.append(i)
             print(i)"""
-        self.keyholder = self.get_keyholder(temp)
-        print(self.keyholder[1])
-        print(temp[self.keyholder[1]])
+        self.keyholder = self.get_keyholder(self.routine)
+        print(self.keyholder[num])
+        print(self.routine[self.keyholder[num]])
 
     def get_routines(self):
         x = open("routine_walkthrough/routines.json", "r")
@@ -93,5 +93,5 @@ class back_end_setup():
         
         return
 
-test = back_end_setup()
+test = back_end_setup(0)
 print(test.save_routines())

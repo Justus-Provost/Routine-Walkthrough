@@ -22,6 +22,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+from json_back_end import back_end_setup as bes
 
 class Ui_RoutineViewer(QMainWindow):
     def __init__(self, f = 0):
@@ -52,6 +53,13 @@ class Ui_RoutineViewer(QMainWindow):
         gridLayout.addWidget(self.description_label, 1, 0, 1, 1)
         self.count_end = 0
         self.count = 0
+        self.backend = bes(f)
+        self.routine = self.backend.routine
+        self.key = self.backend.keyholder
+        print("marker")
+        print(self.routine)
+        print(self.key)
+
 
         #self.retranslateUi()
         #self.next_button.triggered(self.printing)#.connect(self.name_label.show) # type: ignore
@@ -74,10 +82,21 @@ class Ui_RoutineViewer(QMainWindow):
     def next(self):#give routine and keyholder if possible. if not make them contained with self
         print("next")
         print(str(self.count))
-        #need to have save in case there were any modifications
-        self.name_label.setText(str(self.count))
-        self.description_label.setText(str(self.count%4))
+        if self.count < len(self.key):
+            self.name_label.setText(str(self.key[self.count]))
+            self.description_label.setText(str(self.routine[self.key[self.count]]))
+        else:
+            self.key.append("N/A")
+            self.routine[self.key[len(self.key) - 1]] = "Empty"
+            self.name_label.setText(str(self.key[self.count]))
+            self.description_label.setText(str(self.routine[self.key[self.count]]))
         self.count += 1
+        """else:
+
+            #need to have save in case there were any modifications
+            self.name_label.setText(str(self.count))
+            self.description_label.setText(str(self.count%4))
+        self.count += 1"""
         """#planning
         if self.count == len(self.keyholder):
             self.keyholder.append(str(self.count))
