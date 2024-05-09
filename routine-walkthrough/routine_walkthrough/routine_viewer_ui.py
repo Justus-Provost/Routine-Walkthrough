@@ -16,7 +16,6 @@ from PyQt6.QtWidgets import (
     QMainWindow,
     QStatusBar,
     QToolBar,
-    #QDialog #experiment
 )
 from PyQt6 import QtCore, QtGui, QtWidgets
 
@@ -59,23 +58,11 @@ class Ui_RoutineViewer(QMainWindow):
         print("marker")
         print(self.routine)
         print(self.key)
-
-
-        #self.retranslateUi()
-        #self.next_button.triggered(self.printing)#.connect(self.name_label.show) # type: ignore
-        #self.end_button.clicked.connect(self.description_label.show)#setText("hi")) # type: ignore
-        #QtCore.QMetaObject.connectSlotsByName(self)
-        if f == 1:
-            print("True")
-        else:
-            print("False")
         self.next()
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("RoutineViewer", "RoutineViewer"))
-        #self.end_button.setText(_translate("RoutineViewer", "End"))
-        #self.next_button.setText(_translate("RoutineViewer", "Next"))
         self.name_label.setText(_translate("RoutineViewer", "place holder for name of item in routine"))
         self.description_label.setText(_translate("RoutineViewer", "place holder for description of item in routine"))
     
@@ -91,31 +78,8 @@ class Ui_RoutineViewer(QMainWindow):
             self.name_label.setText(str(self.key[self.count]))
             self.description_label.setText(str(self.routine[self.key[self.count]]))
         self.count += 1
-        """else:
-
-            #need to have save in case there were any modifications
-            self.name_label.setText(str(self.count))
-            self.description_label.setText(str(self.count%4))
-        self.count += 1"""
-        """#planning
-        if self.count == len(self.keyholder):
-            self.keyholder.append(str(self.count))
-            self.routine[self.keyholder[self.count]] = self.count
-        
-        self.name_label.setText(str(self.keyholder[self.count]))
-        self.description_label.setText(str(self.routine[self.keyholder[self.count_next]]))
-        
-        """
     
     def end(self):
         print("End")
         print(str(self.count_end))
-        #need to have save in case there were any modifications
         self.count += 1
-        
-"""
-app = QApplication(sys.argv)
-w = Ui_RoutineViewer()
-w.setupUi(Ui_RoutineViewer())
-w.show()
-app.exec()"""

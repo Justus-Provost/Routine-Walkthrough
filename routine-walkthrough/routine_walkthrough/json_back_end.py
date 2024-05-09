@@ -1,16 +1,4 @@
 import json
-"""
-x = open("routine_walkthrough/routines.json", "r")
-#y = json.loads(x)
-y = json.loads(x.read())
-print(y)
-print("first test")
-print(y['routines'][0]['morning'][0]['get dressed']) #This is how to properly read the .json file and organize it
-print("second test")
-print(type(y['routines'][0]['morning'][0]['get dressed']))
-print("third test")
-"""
-#y['routines'][0][i] this is how I will process the individual routines.
 
 class routine_control():# create different objects for each routine than save them as different objects if this
     def __init__(self):
@@ -32,7 +20,6 @@ class back_end_setup():
         super().__init__()
         self.routines = self.get_routines()
         print(type(list(self.routines)))
-        #self.routines = list(self.routines)
         print(type(self.routines))
         self.separate_routine(self.routines, num)
         print("temp")
@@ -42,10 +29,6 @@ class back_end_setup():
         print("temp")
         temp = self.get_specific_routine(1)
         print(temp)
-        """self.keyholder = []
-        for i in temp:
-            self.keyholder.append(i)
-            print(i)"""
         self.keyholder = self.get_keyholder(self.routine)
         print(self.keyholder[num])
         print(self.routine[self.keyholder[num]])
@@ -59,7 +42,6 @@ class back_end_setup():
 
     def separate_routine(self, x, z):
         print(x)
-        #print(x[0])
         self.routines_list = []
         for y in x:
             print(type(y))
@@ -79,14 +61,11 @@ class back_end_setup():
     
     def get_specific_routine(self, n):
         return self.routines_list[n]
-        
-
 
     def rebuild_all_routines(self, x):
         print("testing")
         print(x[0])
         print(self.temp[x[0]])
-        #pass
 
     def save_routines(self):
         self.all_routines
