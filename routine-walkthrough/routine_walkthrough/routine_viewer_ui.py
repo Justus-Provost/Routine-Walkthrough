@@ -44,10 +44,10 @@ class Ui_RoutineViewer(QMainWindow):
         next_button.setText("Next")
         next_button.clicked.connect(self.next)
         gridLayout.addWidget(next_button, 0, 1, 1, 1)
-        self.name_label = QtWidgets.QLabel(parent=gridLayoutWidget)
+        self.name_label = QtWidgets.QTextEdit(parent=gridLayoutWidget)
         self.name_label.setObjectName("name_label")
         gridLayout.addWidget(self.name_label, 0, 0, 1, 1)
-        self.description_label = QtWidgets.QLabel(parent=gridLayoutWidget)
+        self.description_label = QtWidgets.QTextEdit(parent=gridLayoutWidget)
         self.description_label.setObjectName("description_label")
         gridLayout.addWidget(self.description_label, 1, 0, 1, 1)
         self.count_end = 0
@@ -58,6 +58,7 @@ class Ui_RoutineViewer(QMainWindow):
         print("marker")
         print(self.routine)
         print(self.key)
+        self.routine_original_length = len(self.key)
         self.next()
 
     def retranslateUi(self):
@@ -69,7 +70,12 @@ class Ui_RoutineViewer(QMainWindow):
     def next(self):#give routine and keyholder if possible. if not make them contained with self
         print("next")
         print(str(self.count))
+        if self.count > 0:
+            self.key[self.count-1] = self.name_label.toPlainText()
+            self.routine[self.key[self.count-1]] = self.description_label.toPlainText()
         if self.count < len(self.key):
+            # self.key[self.count-1] = self.name_label.toPlainText()
+            # self.routine[self.key[self.count-1]] = self.description_label.toPlainText()
             self.name_label.setText(str(self.key[self.count]))
             self.description_label.setText(str(self.routine[self.key[self.count]]))
         else:
@@ -82,4 +88,8 @@ class Ui_RoutineViewer(QMainWindow):
     def end(self):
         print("End")
         print(str(self.count_end))
-        self.count += 1
+        self.key[self.count-1] = self.name_label.toPlainText()
+        self.routine[self.key[self.count-1]] = self.description_label.toPlainText()
+        print(self.key)
+        print(self.routine)
+        
