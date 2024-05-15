@@ -85,11 +85,29 @@ class Ui_RoutineViewer(QMainWindow):
             self.description_label.setText(str(self.routine[self.key[self.count]]))
         self.count += 1
     
-    def end(self):
-        print("End")
-        print(str(self.count_end))
-        self.key[self.count-1] = self.name_label.toPlainText()
-        self.routine[self.key[self.count-1]] = self.description_label.toPlainText()
+    def end(self):#make this initiate repair after destroying all instances of 'N/A'
+        # print("End")
+        # print(str(self.count_end))
+        # self.key[self.count-1] = self.name_label.toPlainText()
+        # self.routine[self.key[self.count-1]] = self.description_label.toPlainText()
+        # print(self.key)
+        # print(self.routine)
+        self.key = self.clean_key()# destroy all instances of 'N/A'
+        self.routine = self.clean_routine()
+        # give both self.key and self.routine to json_back_end so it can write them onto the json
         print(self.key)
         print(self.routine)
+    def clean_key(self):
+        key = []
+        for i in self.key:
+            if i == 'N/A':
+                pass# destroy all instances of 'N/A'
+            else:
+                key.append(i)
+        return key
+    def clean_routine(self):
+        routine = {}
+        for i in self.key:
+            routine[i] = self.routine[i]
+        return routine
         
