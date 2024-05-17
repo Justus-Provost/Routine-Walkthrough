@@ -32,6 +32,7 @@ class back_end_setup():
         self.keyholder = self.get_keyholder(self.routine)
         print(self.keyholder[num])
         print(self.routine[self.keyholder[num]])
+        self.num = num
 
     def get_routines(self):
         x = open("routine_walkthrough/routines.json", "r")
@@ -67,10 +68,15 @@ class back_end_setup():
         print(x[0])
         print(self.temp[x[0]])
 
-    def save_routines(self):
-        self.all_routines
-        
-        return
-
-test = back_end_setup(0)
-print(test.save_routines())
+    def save_routines(self, test):
+        #self.all_routines['routines'][0] = test
+        #self.routines[self.all_routines['routines'][0][self.num]][0] = test
+        #self.routines[self.routines_list[self.num]]
+        print("routine list type: "+str(type(self.routines_list)))
+        print("routine list[] type: "+str(type(self.routines_list[self.num])))
+        self.routines_list[self.num] = test
+        print("routine list: "+str(self.routines_list))
+        print("routine list: "+str(self.routines_list[self.num]))
+        # print("received"+str(test))
+        # print("rebuilt"+str(self.all_routines))
+        # print("maybe"+str(self.routines))

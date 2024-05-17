@@ -97,6 +97,9 @@ class Ui_RoutineViewer(QMainWindow):
         # give both self.key and self.routine to json_back_end so it can write them onto the json
         print(self.key)
         print(self.routine)
+        #write = bes()
+        self.backend.save_routines(self.routine)
+        self.close()
     def clean_key(self):
         key = []
         for i in self.key:
