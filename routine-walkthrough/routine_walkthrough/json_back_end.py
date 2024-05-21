@@ -39,6 +39,7 @@ class back_end_setup():
         print(x)
         self.all_routines = json.loads(x.read())
         print(self.all_routines)
+        x.close()
         return self.all_routines['routines'][0]
 
     def separate_routine(self, x, z):
@@ -69,6 +70,9 @@ class back_end_setup():
         print(self.temp[x[0]])
 
     def save_routines(self, test):
+        y = []
+        for i in self.all_routines['routines'][0]:
+            y.append(i)
         #self.all_routines['routines'][0] = test
         #self.routines[self.all_routines['routines'][0][self.num]][0] = test
         #self.routines[self.routines_list[self.num]]
@@ -77,6 +81,15 @@ class back_end_setup():
         self.routines_list[self.num] = test
         print("routine list: "+str(self.routines_list))
         print("routine list: "+str(self.routines_list[self.num]))
+        # x = open("routine_walkthrough/routines.json", "r")
+        # print(x)
+        # self.all_routines = json.loads(x.read())
+        # print(self.all_routines)
+        # x.close()
+        print(str(self.all_routines['routines'][0][y[self.num]][0]))
+        self.all_routines['routines'][0][y[self.num]][0] = test
+        print(str(self.all_routines['routines'][0][y[self.num]][0]))
+        print(str(self.all_routines))
         # print("received"+str(test))
         # print("rebuilt"+str(self.all_routines))
         # print("maybe"+str(self.routines))
