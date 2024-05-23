@@ -39,13 +39,12 @@ class Ui_RoutineSelect(QMainWindow):
         self.setCentralWidget(self.centralwidget)
         toolbar = QToolBar("THE toolbar")
         self.addToolBar(toolbar)
-        menuplace_holder_1 = QAction("toolbar_placeholder_1", self)
-        menuplace_holder_1.setObjectName("menuplace_holder_1")
-        
+        menuplace_holder_1 = QAction("Morning", self)
+        menuplace_holder_1.setObjectName("Morning")
         menuplace_holder_1.triggered.connect(self.open_first)
         toolbar.addAction(menuplace_holder_1)
-        menuplace_holder_2 = QAction("toolbar_placeholder_2", self)
-        menuplace_holder_2.setObjectName("menuplace_holder_2")
+        menuplace_holder_2 = QAction("Bedtime", self)
+        menuplace_holder_2.setObjectName("Bedtime")
         menuplace_holder_2.triggered.connect(self.open_second)
         toolbar.addAction(menuplace_holder_2)
         
@@ -56,7 +55,7 @@ class Ui_RoutineSelect(QMainWindow):
     def retranslateUi(self, RoutineSelect):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("RoutineSelect", "RoutineSelect"))
-        self.instruction_select_text.setText(_translate("RoutineSelect", "Choose which routine to walkthrough from the toolbar."))
+        self.instruction_select_text.setText(_translate("RoutineSelect", "Choose which routine to walkthrough from the toolbar. Leaving the top text box with 'delete' will remove that item in the routine."))
         
     def open_first(self):# try to come up with a different solution if possible
         self.open_viewer(1)

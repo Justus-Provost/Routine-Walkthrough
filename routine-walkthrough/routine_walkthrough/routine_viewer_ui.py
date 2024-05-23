@@ -79,7 +79,7 @@ class Ui_RoutineViewer(QMainWindow):
             self.name_label.setText(str(self.key[self.count]))
             self.description_label.setText(str(self.routine[self.key[self.count]]))
         else:
-            self.key.append("N/A")
+            self.key.append("delete")
             self.routine[self.key[len(self.key) - 1]] = "Empty"
             self.name_label.setText(str(self.key[self.count]))
             self.description_label.setText(str(self.routine[self.key[self.count]]))
@@ -103,7 +103,7 @@ class Ui_RoutineViewer(QMainWindow):
     def clean_key(self):
         key = []
         for i in self.key:
-            if i == 'N/A':
+            if i == 'delete':
                 pass# destroy all instances of 'N/A'
             else:
                 key.append(i)
