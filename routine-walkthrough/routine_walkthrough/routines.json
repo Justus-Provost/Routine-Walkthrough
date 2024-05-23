@@ -14,6 +14,28 @@
                     "Put on pajamas": "Put on shorts in the summer or pants otherwise.",
                     "Plug phone in": "The outlet is on your desk."
                 }
+            ],
+            "friedrice": [
+                {
+                    "Prepare ingredients and equipment": "Leftover rice, oil of your choosing, chopped green onions, garlic and onion powder, salt, soy sauce, sesame oil, gochujong, 2 eggs, pan, bowl, spatchula and a utensil of your choice.",
+                    "Begin": "Oil the pan with the oil of your choosing and place in the green onions on medium heat. Add in the rice after the pan is sufficiently hot. Stir and fold.",
+                    "Continue": "Add in your seasonings, sauces and sesame oil. Continue stirring and folding while you add in both eggs.",
+                    "Complete": "After the eggs are cooked and stirred in, pour everything into a bowl and stir in the gochujong. Enjoy."
+                }
+            ],
+            "placeholder": [
+                {
+                    "Get dressed": "Put on clothes to match the weather.",
+                    "Eat breakfast": "Toast or an egg.",
+                    "Brush teeth": "Use the red toothbrush and blue toothpaste."
+                }
+            ],
+            "present": [
+                {
+                    "Get dressed": "Put on clothes to match the weather.",
+                    "Eat breakfast": "Toast or an egg.",
+                    "Brush teeth": "Use the red toothbrush and blue toothpaste."
+                }
             ]
         }
     ]

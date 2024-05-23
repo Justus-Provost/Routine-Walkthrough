@@ -47,6 +47,18 @@ class Ui_RoutineSelect(QMainWindow):
         menuplace_holder_2.setObjectName("Bedtime")
         menuplace_holder_2.triggered.connect(self.open_second)
         toolbar.addAction(menuplace_holder_2)
+        menuplace_holder_3 = QAction("Fried Rice", self)
+        menuplace_holder_3.setObjectName("Fried Rice")
+        menuplace_holder_3.triggered.connect(self.open_third)
+        toolbar.addAction(menuplace_holder_3)
+        menuplace_holder_4 = QAction("Placeholder", self)
+        menuplace_holder_4.setObjectName("Placeholder")
+        menuplace_holder_4.triggered.connect(self.open_fourth)
+        toolbar.addAction(menuplace_holder_4)
+        menuplace_holder_5 = QAction("Present", self)
+        menuplace_holder_5.setObjectName("Present")
+        menuplace_holder_5.triggered.connect(self.open_fifth)
+        toolbar.addAction(menuplace_holder_5)
         
         self.retranslateUi(self)
         
@@ -55,13 +67,22 @@ class Ui_RoutineSelect(QMainWindow):
     def retranslateUi(self, RoutineSelect):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("RoutineSelect", "RoutineSelect"))
-        self.instruction_select_text.setText(_translate("RoutineSelect", "Choose which routine to walkthrough from the toolbar. Leaving the top text box with 'delete' will remove that item in the routine."))
+        self.instruction_select_text.setText(_translate("RoutineSelect", "Choose which routine to walkthrough from the toolbar. Leaving the top text box with 'delete' will remove that item in the routine. You must press the next button and end button(end button not needed until you are finished) to save your edits."))
         
     def open_first(self):# try to come up with a different solution if possible
         self.open_viewer(1)
 
     def open_second(self):
         self.open_viewer(2)
+
+    def open_third(self):
+        self.open_viewer(3)
+
+    def open_fourth(self):
+        self.open_viewer(4)
+
+    def open_fifth(self):
+        self.open_viewer(5)
     
     def open_viewer(self, v = 0):
         print("here")
