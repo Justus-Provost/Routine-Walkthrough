@@ -1,18 +1,18 @@
 {
-    "routines":[
+    "routines": [
         {
-            "morning":[
+            "morning": [
                 {
-                    "get dressed": "put on clothes to match the weather.",
-                    "eat breakfast": "toast or an egg.",
-                    "brush teeth": "red toothbrush and blue toothpaste."
+                    "Get dressed": "Put on clothes to match the weather.",
+                    "Eat breakfast": "Toast or an egg.",
+                    "Brush teeth": "Use the red toothbrush and blue toothpaste."
                 }
             ],
-            "bedtime":[
+            "bedtime": [
                 {
-                    "brushteeth": "red toothbrush and blue toothpaste.",
-                    "put on pajamas": "use shorts in the summer and pants otherwise.",
-                    "plug phone in": "the outlet is on the desk."
+                    "Brushteeth": "Use the red toothbrush and blue toothpaste.",
+                    "Put on pajamas": "Put on shorts in the summer or pants otherwise.",
+                    "Plug phone in": "The outlet is on your desk."
                 }
             ]
         }

@@ -76,11 +76,11 @@ class back_end_setup():
         #self.all_routines['routines'][0] = test
         #self.routines[self.all_routines['routines'][0][self.num]][0] = test
         #self.routines[self.routines_list[self.num]]
-        print("routine list type: "+str(type(self.routines_list)))
-        print("routine list[] type: "+str(type(self.routines_list[self.num])))
-        self.routines_list[self.num] = test
-        print("routine list: "+str(self.routines_list))
-        print("routine list: "+str(self.routines_list[self.num]))
+        # print("routine list type: "+str(type(self.routines_list)))
+        # print("routine list[] type: "+str(type(self.routines_list[self.num])))
+        # self.routines_list[self.num] = test
+        # print("routine list: "+str(self.routines_list))
+        # print("routine list: "+str(self.routines_list[self.num]))
         # x = open("routine_walkthrough/routines.json", "r")
         # print(x)
         # self.all_routines = json.loads(x.read())
@@ -90,6 +90,14 @@ class back_end_setup():
         self.all_routines['routines'][0][y[self.num]][0] = test
         print(str(self.all_routines['routines'][0][y[self.num]][0]))
         print(str(self.all_routines))
+        print("the json")
+        x = open("routine_walkthrough/routines.json", "w")
+        print(x)
+        y = json.dumps(self.all_routines, indent=4)#, separators=", ")
+
+        #self.all_routines = json.loads(x.read())
+        print(y)
+        x.write(y)
         # print("received"+str(test))
         # print("rebuilt"+str(self.all_routines))
         # print("maybe"+str(self.routines))
