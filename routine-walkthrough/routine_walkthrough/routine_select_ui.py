@@ -29,14 +29,14 @@ class Ui_RoutineSelect(QMainWindow):
         self.r = ["place_holder", "another_place_holder"]
         self.w = None
         self.setObjectName("RoutineSelect")
-        self.resize(275, 200)
+        self.resize(350, 200)
         self.centralwidget = QtWidgets.QWidget(parent=self)
         self.centralwidget.setObjectName("centralwidget")
         self.instruction_select_text = QtWidgets.QLabel(parent=self.centralwidget)
         self.instruction_select_text.setGeometry(QtCore.QRect(0, 0, 261, 151))
         self.instruction_select_text.setWordWrap(True)
         self.instruction_select_text.setObjectName("instruction_select_text")
-        self.setCentralWidget(self.centralwidget)
+        self.setCentralWidget(self.instruction_select_text)
         toolbar = QToolBar("THE toolbar")
         self.addToolBar(toolbar)
         menuplace_holder_1 = QAction("Morning", self)

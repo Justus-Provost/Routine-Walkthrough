@@ -30,8 +30,8 @@ class back_end_setup():
         temp = self.get_specific_routine(1)
         print(temp)
         self.keyholder = self.get_keyholder(self.routine)
-        print(self.keyholder[num])
-        print(self.routine[self.keyholder[num]])
+        # print(self.keyholder[num])
+        # print(self.routine[self.keyholder[num]])
         self.num = num
 
     def get_routines(self):
