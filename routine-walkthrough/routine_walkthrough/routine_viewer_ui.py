@@ -9,6 +9,7 @@ import sys
 import json
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QAction, QIcon
+from PyQt6.QtGui import QFont, QFontDatabase
 from PyQt6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -46,9 +47,11 @@ class Ui_RoutineViewer(QMainWindow):
         gridLayout.addWidget(next_button, 0, 1, 1, 1)
         self.name_label = QtWidgets.QTextEdit(parent=gridLayoutWidget)
         self.name_label.setObjectName("name_label")
+        self.name_label.setFont(QFont("calibri", 12))
         gridLayout.addWidget(self.name_label, 0, 0, 1, 1)
         self.description_label = QtWidgets.QTextEdit(parent=gridLayoutWidget)
         self.description_label.setObjectName("description_label")
+        self.description_label.setFont(QFont("calibri", 12))
         gridLayout.addWidget(self.description_label, 1, 0, 1, 1)
         self.count_end = 0
         self.count = 0

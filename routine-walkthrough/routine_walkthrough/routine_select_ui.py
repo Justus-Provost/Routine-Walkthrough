@@ -9,6 +9,7 @@ import sys
 import json
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QAction, QIcon
+from PyQt6.QtGui import QFont, QFontDatabase
 from PyQt6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -35,6 +36,7 @@ class Ui_RoutineSelect(QMainWindow):
         self.instruction_select_text = QtWidgets.QLabel(parent=self.centralwidget)
         self.instruction_select_text.setGeometry(QtCore.QRect(0, 0, 261, 151))
         self.instruction_select_text.setWordWrap(True)
+        self.instruction_select_text.setFont(QFont("Calibri", 12))
         self.instruction_select_text.setObjectName("instruction_select_text")
         self.setCentralWidget(self.instruction_select_text)
         toolbar = QToolBar("THE toolbar")
@@ -95,6 +97,14 @@ class Ui_RoutineSelect(QMainWindow):
 def startUp():
     routine = ["place_holder", "another_place_holder"]
     app1 = QApplication(sys.argv)
+
+    stylesheet = None
+    styles_path = "routine_walkthrough/styles.qss"
+    with open(styles_path, "r") as f:
+        stylesheet = f.read()
+    app1.setStyleSheet(stylesheet)
+
+    app1.setStyle("Fusion")
     w = Ui_RoutineSelect()
     w.show()
     app1.exec()
